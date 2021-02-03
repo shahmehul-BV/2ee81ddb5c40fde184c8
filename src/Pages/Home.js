@@ -9,14 +9,22 @@ const API_KEY = "jgCQSQP4pkZ69boqvz19RqI2wgQk6Qgt5HI2FxxN";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-    },
+    display: "flex",
+    flexDirection: "column",
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: "50ch",
+  },
+  margin1: {
+    marginRight: theme.spacing(10),
+  },
+  margin2: {
+    marginLeft: theme.spacing(10),
+  },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
   },
 }));
 
@@ -54,13 +62,11 @@ const Home = memo(() => {
 
   const getAsteroidList = (e) => {
     e.preventDefault();
-    console.log("In List", arrData);
     axios
       .get(`https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=${API_KEY}`)
       .then((res) => {
         var resultArray = res.data.near_earth_objects;
         setArrData(resultArray);
-        console.log("Random", resultArray);
         for (let i = 0; i < resultArray[i].id.length - 1; i++) {
           arrData.push(resultArray[i].id);
         }
@@ -74,11 +80,19 @@ const Home = memo(() => {
   return (
     <div class={"row"}>
       <div class={"left-column"}>
-        <form>
+        <form className={classes.root} noValidate autoComplete="off">
           <div>
             <TextField
+              label="Asteroid ID"
+              placeholder="Enter Asteroid ID"
+              id="outlined-margin-dense"
+              style={{ margin: 8 }}
               variant="outlined"
-              label="Enter Asteroid ID"
+              className={classes.textField}
+              margin="normal"
+              InputLabelProps={{
+                shrink: true,
+              }}
               onChange={(e) => onHandleChange(e)}
             />
           </div>
@@ -86,26 +100,42 @@ const Home = memo(() => {
           <div class={"btn-group"}>
             <Button
               type="submit"
+              variant="contained"
+              color="primary"
               disabled={isDisable}
+              size="medium"
+              className={classes.margin1}
               onClick={(e) => getAsteroidInfo(e)}
             >
               Sumbit
             </Button>
 
-            <Button type="submit" onClick={(e) => getAsteroidList(e)}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              size="medium"
+              className={classes.margin2}
+              onClick={(e) => getAsteroidList(e)}
+            >
               Random Asteroid
             </Button>
           </div>
         </form>
-        {arrData ? (
-          <div>
-            {arrData.map((item) => (
-              <div onClick={() => history.push(`./details/${item.id}`)}>
-                {item.id}
-              </div>
-            ))}
-          </div>
-        ) : null}
+        <div className={"list-view"}>
+          {arrData ? (
+            <>
+              {arrData.map((item) => (
+                <div
+                  className={"list-style"}
+                  onClick={() => history.push(`./details/${item.id}`)}
+                >
+                  {item.id}
+                </div>
+              ))}
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );

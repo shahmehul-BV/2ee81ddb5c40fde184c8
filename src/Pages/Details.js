@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: 275,
     marginTop: "30px",
-    backgroundColor: "red",
+    backgroundColor: "#3f51b5",
   },
   bullet: {
     display: "inline-block",

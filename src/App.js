@@ -17,7 +17,6 @@ function App() {
           <Route exact path={"/"} component={Home} />
           <Route exact path={"/details/:id"} component={Details} />
         </Switch>
-        <footer class={"footer"}>Footer</footer>
       </BrowserRouter>
     </div>
   );
