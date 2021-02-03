@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react";
 import Axios from "axios";
-import { Card, CardContent, Typography, Grid, Paper } from "@material-ui/core";
+import { Card, CardContent, Grid, Paper } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useParams } from "react-router-dom";
 import "./home.css";
@@ -12,17 +12,6 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
     marginTop: "30px",
     backgroundColor: "#3f51b5",
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
   },
   paper: {
     padding: theme.spacing(2),

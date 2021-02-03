@@ -15,16 +15,13 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: "50ch",
+    width: "45ch",
   },
   margin1: {
     marginRight: theme.spacing(10),
   },
   margin2: {
     marginLeft: theme.spacing(10),
-  },
-  extendedIcon: {
-    marginRight: theme.spacing(1),
   },
 }));
 
@@ -35,8 +32,6 @@ const Home = memo(() => {
   const [isDisable, setIsDisable] = useState(true);
   const [arrData, setArrData] = useState([]);
   const [response, setResponse] = useState("");
-  // To get Random Item
-  // let randomItem = [];
 
   const onHandleChange = (event) => {
     setData1(event.target.value);
@@ -70,16 +65,14 @@ const Home = memo(() => {
         for (let i = 0; i < resultArray[i].id.length - 1; i++) {
           arrData.push(resultArray[i].id);
         }
-        // For Random Item
-        // randomItem = arrData[Math.floor(Math.random() * arrData.length)];
       })
       .catch((err) => {
         console.log("errList--->", err.response);
       });
   };
   return (
-    <div class={"row"}>
-      <div class={"left-column"}>
+    <div className={"row"}>
+      <div className={"left-column"}>
         <form className={classes.root} noValidate autoComplete="off">
           <div>
             <TextField
@@ -127,6 +120,7 @@ const Home = memo(() => {
             <>
               {arrData.map((item) => (
                 <div
+                  key={item.id}
                   className={"list-style"}
                   onClick={() => history.push(`./details/${item.id}`)}
                 >

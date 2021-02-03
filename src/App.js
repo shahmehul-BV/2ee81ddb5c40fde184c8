@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   BrowserRouter,
 } from "react-router-dom";
 import { Details, Home } from "./Pages";
@@ -11,7 +10,7 @@ import { Details, Home } from "./Pages";
 function App() {
   return (
     <div className="App">
-      <header class="header">NASA Form</header>
+      <header className="header">NASA Form</header>
       <BrowserRouter>
         <Switch>
           <Route exact path={"/"} component={Home} />
