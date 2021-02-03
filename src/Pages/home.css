@@ -1,0 +1,31 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-column {
+  float: center;
+  width: 100%;
+  /* // background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  /* background-color: green; */
+  justify-content: center;
+  align-items: center;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
